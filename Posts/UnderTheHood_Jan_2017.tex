@@ -1,0 +1,196 @@
+\documentclass[10pt]{article}
+
+\usepackage[absolute]{textpos}
+\setlength{\parindent}{0pt}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\textblockorigin{0.5in}{0.5in}
+\definecolor{MintGreen}      {rgb}{0.2,0.85,0.5}
+\definecolor{LightGreen}     {rgb}{0.9,1,0.9}
+\definecolor{LightYellow}    {rgb}{1,1,0.6}
+\definecolor{test}           {rgb}{0.8,0.95,0.95}
+
+\TPshowboxestrue
+\TPMargin{2mm}
+\pagestyle{empty}
+
+
+\begin{document}
+One of the most remarkable things about vectors is also one of the most non-intuitive things - at least judging by how hard it is to teach; namely that the rate of change in a set of vectors can be expressed in terms of the vectors themselves.  I think it is hard to relate to because it is typically applied in situation where a set of unit vectors, spanning a space, are moving with respect to a set of fixed vectors.  The notion that is hard to accept is that time derivatives of these vectors can be written as linear combinations of the same vectors, even though they are changing.  On the surface, it seems like a contradiction where something moving and fluid is expressed in terms of something that is moving as well. A sort of self-referential recipe for confusion.  And yet, this is precisely what the method of moving frames does and which has proven very successful.
+
+In a nutshell, the method of moving frames states that the motion of a set of unit vectors $\left\{\hat e_x, \hat e_y, \hat e_z\right\}$, which, for example, may be the body axes for a rotating object, can be written as
+
+\[ \frac{d}{dt} \left[ \begin{array}{c} \hat e_x \\ \hat e_y \\ \hat e_z \end{array} \right] = 
+   \left[ \begin{array}{ccc} 0 & \alpha & \beta \\ -\alpha & 0 & \gamma \\ -\beta & -\gamma & 0 \end{array} \right]
+   \left[ \begin{array}{c} \hat e_x \\ \hat e_y \\ \hat e_z \end{array} \right] \; .\]
+
+The assymetry of the of pre-multiplying matrix, is a consequence of the unit lengths of each member of the set and their mutual orthogonality.  In other words, the orthonormality, 
+
+\[ \hat e_i \cdot \hat e_j = \delta_{ij} \; ,\]
+
+of the set leads to the relation
+
+\[ \frac{d}{dt} \left( \hat e_i \cdot \hat e_j \right) = 0 \;. \]
+
+The above relation has two very different outcomes depending on what the indices $i, j$ are.  If they are identical, then the zero on the right-hand side reflects the unit length of each of the basis vectors.  When they are different, the zero reflects the fact that they are perpendicular.
+
+To be concrete, consider the case where $i=j=x$.  Expanding the derivative in this case leads to the relation that the time-rate-of-change of each unit vector is perpendicular to the unit vector itself:
+
+\[ \frac{d}{dt} \left(\hat e_x \cdot \hat e_x \right) = \frac{d \hat e_x}{dt} \cdot \hat e_x + \hat e_x \cdot \frac{d \hat e_x}{dt} = 2 \hat e_x \cdot \frac{d \hat e_x}{dt} = 0\; .\]  
+
+A consequence of this relationship and the fact that the set spans the space is that the time derivative of $\hat e_x$must be expressed as 
+
+\[\frac{d \hat e_x}{dt} = \alpha \hat e_y + \beta \hat e_z  \; , \]
+
+where $\alpha$ and $\beta$ can be determined as shown below.
+
+Next consider the case where $i=x$ and $j=y$.  A simple expansion yields
+
+\[\frac{d}{dt}\left( \hat e_x \cdot \hat e_y \right) = \frac{d \hat e_x}{dt} \cdot \hat e_y + \hat e_x \cdot \frac{d \hat e_y}{dt} = 0 \; ,\]
+
+from which one can conclude that
+
+\[ \frac{d \hat e_x}{dt} \cdot \hat e_y = - \hat e_x \cdot \frac{d \hat e_y}{dt} \; .\]
+
+The assymetry of the matrix follows immediately.
+
+On the surface of it, the above analysis suggests that three functions, $\alpha, \beta, \gamma$ are needed to fully specify the motion of a frame.  A deeper analysis shows that there are cases where one of these functions can be set identically to zero.  I refer to frames of this sort as being minimal frames.
+
+A minimal frame may arise in two ways, either the particular choice of motion for the frame results in a simplification, or the frame is intrinsically minimal, regardless of how the basis vectors twist and turn. 
+
+The interest in this column is the latter case (although the former will be touched upon). 
+
+The scenario that will be analyzed is where the basis vectors are defined locally on a curve, typically in terms of the position, $\vec r(t)$ and the velocity, $\vec v(t)$.  Since normalization plays an important rule, a wise approach is to explore how to take derivatives of functions of vector norms in generic terms and then apply them widely and fruitfully.
+
+The prototype function is the norm itself, expressed, in terms of an arbitrary vector $\vec A$, as 
+
+\[ |\vec A | = \sqrt{ A_x^2 + A_y^2 + A_z^2 } \; .\]
+
+The partial derivative of the norm with respect to one of the components is given by
+
+\[ \frac{\partial |\vec A|}{\partial A_i} = \frac{1}{2} \left( A_x^2 + A_y^2 + A_z^2 \right)^{1/2} \frac{\partial}{\partial A_i} \left( A_x^2 + A_y^2 + A_z^2 \right) = \frac{A_i}{|\vec A|} \; .\]
+
+Unitizing a vector involves dividing by the norm, so the corresponding derivative,
+ 
+\[ \frac{\partial}{\partial A_i} \frac{1}{|\vec A|} = -\frac{A_i}{|\vec A|^3} \; ,\]
+
+is also handy to have lying around. 
+
+From these basic pieces, total time derivatives are constructed from the chain rule as
+
+\[ \frac{d}{dt} |\vec A| = \frac{\partial |\vec A|}{\partial A_i} \frac{d A_i}{dt} = \frac{A_i {\dot A}_i}{|\vec A|} \]
+
+and
+
+\[ \frac{d}{dt} \frac{1}{|\vec A|} = - \frac{A_i {\dot A}_i}{|\vec A|^3} \; .\]
+
+All the needed tools are at our fingertips so let's dig in.
+
+The most famous minimal frame is the Frenet-Serret, defined by the set
+
+\[ \hat T = \frac{\vec v}{|\vec v|} \; ,\]
+
+\[ \hat B = \hat T \times \hat N \; ,\]
+
+and
+
+\[ \hat N = \frac{d \hat T}{d t} / \left| \frac{d \hat T}{d t} \right | \; \]
+
+By definition, the derivative of $\hat T$ is expressed solely in terms of $\hat N$, and the Frenet-Serret frame is minimal by construction.  It is conventional to rescale the derivatives to express them in terms of arc-length with
+
+\[ \frac{d}{dt} \hat T = \frac{d \hat T}{d s}  \frac{ds}{dt} = v \frac{d \hat T}{d s}  \]
+
+as the key formula.  Once the conversion has been performed, the definition of $\hat N$ takes a particularly simple form
+
+\[ \frac{d}{d s} \hat T \equiv \kappa \hat N \;\]
+ 
+The other derivatives follow suite, giving the well-known Frenet-Serret relations
+
+\[ \frac{d}{d s} \hat N = - \kappa \hat T + \tau \hat B \]
+
+and
+
+\[ \frac{d}{d s} \hat B = -\tau \hat N \; .\]
+
+The Frenet-Serret frame is not the only useful moving frame.  Within the field of astrodynamics, there are several moving frames that help in understanding the motion of heavenly and man-made satellites.  Two of the most useful are the VBN and RIC frames.  
+
+The VBN frame is defined as
+
+\[ \hat V = \frac{\vec v}{|\vec v|} \; ,\]
+
+\[ \hat N = \frac{ \vec r \times \vec v }{ | \vec r \times \vec v | } \;, \]
+
+and
+
+\[ \hat B = \hat V \times \hat N \; .\]
+
+Patterned in concept after the Frenet-Serret frame, VBN frame's $\hat V$ vector is the same as $\hat T$.  However VBN differs in one essential way.  It's $\hat N$ points along the instantaneous angular momentum vector of the trajectory.  This means that there is always a roll-angle about $\hat T \equiv \hat V$ to bring the two frames into alignment.  As a result VBN is not a minimal frame.  
+
+The proof of this result starts from the computation of the time derivative of $\hat V$ given by
+
+\[ \frac{d \hat V}{dt}  = \frac{d}{dt} \frac{\vec v}{|\vec v|} = \frac{\vec a}{|\vec v|} - \vec v \left( \frac{\vec v \cdot \vec a}{|\vec v|^3} \right) \; ,\]
+
+using the formulas derived above.
+
+As a check that the computation was carried through correctly, note that time derivative of $\hat V$ is perpendicular to $\hat V$ itself:
+
+\[ \frac{d \hat V}{dt} \cdot \hat V = \frac{\vec a \cdot \vec v}{|\vec v|^2} - \vec v \cdot \vec v \left( \frac{\vec v \cdot \vec a}{|\vec v|^4} \right) = 0 \; .\]
+
+The time-derivatives of $\hat N$ and $\hat B$ are straightforward but tedious and are not needed to demonstrate the frame is non-minimal.  All that is needed is to take the scalar product of the time derivative $\hat V$ with these vectors and then to use the fact the assymetry of the matrix.  
+
+Doing so with $\hat N$ yields
+
+\[ \frac{d \hat V}{dt} \cdot \hat N = \frac{\vec a \cdot (\vec r \times \vec v) }{|\vec v||\vec r \times \vec v|} - \vec v \cdot (\vec r \times \vec v) \left( \frac{\vec v \cdot \vec a}{|\vec v|^3 |\vec r \times \vec v|} \right) \; . \]
+
+The second term vanishes by the cyclic property of the triple-scalar product and the first can be transformed using the same rule into
+
+\[ \frac{d \hat V}{dt} \cdot \hat N = \frac{\vec v \cdot (\vec a \times \vec r) }{|\vec v||\vec r \times \vec v|} \; . \]
+
+Only in special cases of central forces, where $\vec a$ is parallel to $\vec r$ is this derivative zero; generically it is not.
+
+The final step is to replace $\hat N$ with $\hat B$ in the scalar product.  This yields
+
+\[ \frac{d \hat V}{dt} \cdot \hat B = \frac{d \hat V}{dt} \cdot (\hat V \times \hat N) = \hat V \cdot \left(\frac{d \hat V}{dt} \times \hat N \right) \; .\]
+
+Expanding the right-hand side of this relation gives
+
+\[ \frac{d \hat V}{dt} \cdot \hat B = \frac{ \vec  v \cdot [\vec a \times (\vec r \times \vec v)] }{ |\vec v|^3 |\vec r \times \vec v |} - \frac{ \vec v \cdot [\vec v \times (\vec r \times \vec v)]}{|\vec v|^5 |\vec r \times \vec v|} \; .\]
+
+The second terms is identically zero as can be seen by expanding using the BAC-CAB rule
+
+\[ \vec v \cdot [\vec v \times (\vec r \times \vec v)] = \vec v \cdot \left[ \vec r (\vec v \cdot \vec v) - \vec v (\vec v \cdot \vec r) \right ] = 0 \; .\]
+
+Using the same technique, one concludes that the first term is generally not zero
+
+\[ \vec v \cdot [\vec a \times (\vec r \times \vec v)] = \vec v \cdot \left[ \vec r (\vec v \cdot \vec a) - \vec v (\vec a \cdot \vec r) \right ] \; ,\]
+
+since, generally, the acceleration need not cause a cancellation (although in the case of a central force $\vec a \cdot \vec v = 0$ and VBN is a minimal frame).
+
+The other, commonly-used astrodynamics frame is the RIC frame, defined by 
+
+\[ \hat R = \frac{\vec r}{|\vec r|} \; ,\]
+
+\[ \hat C =  \frac{ \vec r \times \vec v }{ | \vec r \times \vec v | } \; ,\]
+
+and 
+
+\[ \hat I = \hat C \times \hat R \; .\]
+
+Note that $\hat C$ is the same as VBN's $\hat N$.  The RIC frame is minimal, as can be seen by computing the time derivative of $\hat C$, 
+
+\[ \frac{d}{dt} \hat C = \frac{ \vec r \times \vec a}{|\vec r \times \vec v|} - \frac{ \vec r \times \vec v}{|\vec r \times \vec v|^3}  \left[ (\vec r \times \vec v) \cdot (\vec r \times \vec a) \right] \; , \]
+
+and then forming its scalar product with $\hat R$,
+
+\[ \frac{d \hat C}{d t} \cdot \hat R = A (\vec r \times \vec a ) \cdot \vec r + B (\vec r \times \vec v) \cdot \vec r \; ,\]
+
+where $A$ and $B$ are scalar functions whose form is irrelevant for this discussion.
+
+Exploiting the cyclic property of the triple scalar product gives
+
+\[ \frac{d \hat C}{d t} \cdot \hat R = 0 \; .\]
+
+This means that the time derivative of $\hat C$ is proportional only to $\hat I$ thus proving that the RIC frame is minimal.
+
+\end{document}
