@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+%\documentclass{book}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\usepackage{pst-node}
+\usepackage{pst-tree}
+\usepackage{pst-coil}
+\usepackage[absolute]{textpos}
+\usepackage{color}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{longtable}
+\usepackage{arydshln}
+\usepackage{xcolor}
+\usepackage[tikz]{bclogo}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{lipsum}
+\usepackage[many]{tcolorbox}
+\usepackage{geometry}
+
+\definecolor{bgblue}{RGB}{245,243,253}
+\definecolor{ttblue}{RGB}{91,194,224}
+
+\begin{document}
+One of the most confusing aspects of Lagrangian/Hamiltonian mechanics centers on the energy $E$, the function $h$ (or the Hamiltonian $H$), to what extent these two terms can be identified with each other, and which of them is conserved.  The opportunity for confusion arises because there are many different possibilities that show up in practice.  
+
+%Some of these are due to the coordinates used to describe the physics, some are due to the nature of the constraints, and some involve both concepts.  The diagram below attempts to list, organize, and group the most common possibilities, but since the Lagrangian method is very flexible, no doubt, cases exist which fall outside this listing.
+
+To my knowledge, no textbook or article lays out all of these cases in a clear fashion, comparing and contrasting them along the way.  The likely reason for this 'deficiency' is that most of the physics literature focuses on systems of a traditional nature in which the potential energy is not time-dependent.  There are excellent reasons for this at the fundamental level, since the basic four forces seem to be time-invariant.  But to the student grappling with celestial mechanics (a subject that has just about completely fallen out of favor in physics departements) it is of crucial importance; the circular restricted three-body problem being the textbook example of a gravitational interaction whose time variations are essential to understanding the motion.  
+
+The aim of this column is to address this gap.  It is important to acknowlege that <David Morin's treatment of this topic> (http://www.people.fas.harvard.edu/~djmorin/chap15.pdf) is an excellent resource and my treatment largely follows his, with some new extensions and clarifications.  In addition, some examples and concepts (buried in homework problems strewn throughout various chapters) are mined from Herbert Goldstein's textbook 'Classical Mechanics', 2nd edition.  
+
+After a brief summary of the Each of the examples presented as archetypes of their individual categories will be summarized in this installment with  
+
+The single most important concept is that the energy is given, by definition, as the sum of the kinetic energy and potential energies
+
+\[ E = T + V = \frac{1}{2} m \dot {\vec v} ^2 + V(\vec r, \vec v; t) \; . \]
+
+This unambiguous idea often gets obscured by the mathematical operations that result when the transition is made from the usual Newtonian approach to the more analytical approaches of Lagrange or Hamiloton.  In these latter cases, a Lagrangian is first defined as the difference between the kinetic and potential energies $L = T - V$ and the action $S = \int dt L $, when minimized, leads to the Euler-Lagrange equations.  Generally, the Lagrangian depends on the coordinates and the velocities and the Euler-Lagrange equations give second-order differential equations for the motion of the coordinates.  An important point is to note that second-order equations required two initial conditions, the value of the initial coordinate and its velocity, and so 
+
+\[ \frac{d}{dt} \left( \frac{\partial L}{
+
+\[ S = \int dt L
+\[ p_i = \frac{\partial L}{\partial {\dot q}^i} \]
+
+\[ h = \frac{\partial L}{\partial {\dot q}^i} {\dot q}^i - L(q,\dot q;t) \]
+
+\[ \frac{d h}{dt} = \left( \frac{d}{dt} \frac{\partial L}{\partial {\dot q}^i} \]
+
+The Euler Lagrange equations are invariant to a basic change in coordinates from $q^i$ to
+$y^j$ of the form 
+\begin{equation}\label{ELinv_b}
+  q^i = q^i(y^j) .
+\end{equation}
+To see this first note that the from the 
+form of the transformation equation (\ref{ELinv_b}) we get
+\begin{equation}\label{ELinv_a}
+  {\dot q}^i = \frac{\partial q^i}{\partial y^j} {\dot y}^j \,
+\end{equation}
+where $\dot f = \frac{d}{dt} f$. Next note that the Lagrangian 
+$\tilde L (y^j,{\dot y}^j;t )$ in the $y^j$ coordinates 
+is related to the Lagrangian $L (q^i,{\dot q}^i;t )$ 
+in $q^i$ coordinates by virtue of a substitution of (\ref{ELinv_b}) 
+and (\ref{ELinv_a}) yielding
+\begin{equation}\label{ELinv_c}
+  \tilde L (y^j,{\dot y}^j;t ) = L (q^i(y^j),{\dot q}^i(y^j,{\dot y}^j);t ) .
+\end{equation}
+The parts of the Euler-Lagrange equation in terms
+of the $y^j$ coordinates in relation to the $q^i$ coordinates are
+\begin{equation}\label{ELinv_d}
+  \frac{\partial \tilde L}{\partial y^j} =    \frac{\partial L}{\partial q^i}        \frac{\partial q^i}{\partial y^j} 
+                                        +  \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial y^j}
+\end{equation}
+and
+\begin{equation}\label{ELinv_e}
+  \frac{\partial \tilde L}{\partial {\dot y}^j} = \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial {\dot y}^j} .
+\end{equation}
+Now substituting (\ref{ELinv_d}) and (\ref{ELinv_e}) into the Euler-\\Lagrange equations
+yields
+\begin{eqnarray}\label{ELinv_f}
+  \frac{d}{dt} \left( \frac{\partial \tilde L}{\partial {\dot y}^j } \right) - \frac{\partial \tilde L}{\partial y^j} 
+    & = &   \frac{d}{d t} \left( \frac{\partial L}{\partial {\dot q}^i} \right) \frac{\partial {\dot q}^i}{\partial {\dot y}^j} \\ \nonumber
+	&   & + \frac{\partial L}{\partial {\dot q}^i} \frac{d}{dt} \left( \frac{\partial {\dot q}^i}{\partial {\dot y}^j} \right) \\ \nonumber
+    & = & - \frac{\partial L}{\partial q^i}        \frac{\partial q^i}{\partial y^j} 
+	      - \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial y^j} .\nonumber
+\end{eqnarray}
+But from (\ref{ELinv_a}) $ {\partial {\dot q}^i}/{\partial {\dot y}^j} = {\partial q^i}/{\partial y^j}$ and thus the second and
+fourth terms in (\ref{ELinv_f}) cancel, leaving
+\begin{equation}\label{ELinv_g}
+  \frac{d}{dt} \left( \frac{\partial \tilde L}{\partial {\dot y}^j } \right) - \frac{\partial \tilde L}{\partial y^j} = 
+  \left[ \frac{d}{d t} \left( \frac{\partial L}{\partial {\dot q}^i} \right) - \frac{\partial L}{\partial q^i} \right] 
+  \frac{\partial q^i}{\partial y^j} .
+\end{equation}
+Using the definition $\Xi_i = \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i} \right) - \frac{\partial L}{\partial q^i}$,
+Eq. (\ref{ELinv_g}) takes on the more obvious form of
+\begin{equation}\label{ELinv_h}
+  \Xi_{\tilde j} = \Xi_i {\Lambda^i}_{\tilde j}
+\end{equation}
+which shows that the Euler-Lagrange equations transform like the components of a covariant vector.
+
+
+\end{document}

@@ -1,100 +1,126 @@
 \documentclass[12pt]{article}
 %\documentclass{book}
-\usepackage{pstricks}
-\usepackage{pst-plot}
-\usepackage{pst-node}
-\usepackage{pst-tree}
-\usepackage{pst-coil}
 \usepackage[absolute]{textpos}
 \usepackage{color}
 \usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{xspace}
-\usepackage{multirow}
-\usepackage{lscape}
-\usepackage{fancyhdr}
-\usepackage{lastpage}
-\usepackage{longtable}
-\usepackage{arydshln}
-\usepackage{xcolor}
-\usepackage[tikz]{bclogo}
-\usepackage[framemethod=tikz]{mdframed}
-\usepackage{lipsum}
-\usepackage[many]{tcolorbox}
-\usepackage{geometry}
-
-\definecolor{bgblue}{RGB}{245,243,253}
-\definecolor{ttblue}{RGB}{91,194,224}
 
 \begin{document}
-One of the most confusing aspects of Lagrangian/Hamiltonian mechanics centers on the energy $E$, the function $h$ (or the Hamiltonian $H$), to what extent these two terms can be identified with each other, and which of them is conserved.  The opportunity for confusion arises because there are many different possibilities that show up in practice.  The diagram below attempts to list, organize, and group the most common possibilities, but since the Lagrangian method is very flexible, no doubt, cases exist which fall outside the .
+Action and reaction; Newton's 3rd law tells us that for every action there is an equal an opposite reaction.  Nature, in effect, is a banker whose accounts are carefully balanced according to the principle of double-entry bookkeeping.  Modern theories emphasize this point of view by saying at the fundamental level all interactions are mediated by the exchange of 'force quanta' that transfer energy, momentum, and angular momentum.  So all is well - or is it?
 
+Often textbooks muddy the water of this 'simple' situation by engaging in nuanced discussions and citing exceptions without emphasizing two points.  One is that action-reaction is always honored.  The second is that it may required careful logic supported by exact experiements to rescue new cases that seem to be the exception.  
 
+Now these nuances and exceptions, which roughly fall into three prototypical classes, are real and need to be addressed.  Each is interesting in its own right, helping to illustarte and explore the richness of the action-reaction concept, but the 'answer' for each of these cases is always the same - there are degrees of freedom that are being ignored that balance the action-reaction.
 
-To my knowledge, no textbook or article lays out all five cases in a clear fashion, comparing and contrasting them along the way.  The likely reason for this 'deficiency' is that most of the physics literature focuses on systems of a traditional nature in which the Hamiltonian is not time-dependent.  There are excellent reasons for this at the fundamental level, since the basic four forces seem to be time-invariant.  But to the student grappling with celestial mechanics (a subject that has just about completely fallen out of favor in physics departements) it is of crucial importance; the circular restricted three-body problem being the textbook example.  
+Case 1 - Dissipative forces
 
-The aim of this column is to address this gap.  It is important to acknowlege that <David Morin's treatment of this topic> (http://www.people.fas.harvard.edu/~djmorin/chap15.pdf) is an excellent resource and my treatment largely follows his, with some new extensions and clarifications.  In addition, some examples and concepts (buried in homework problems strewn throughout various chapters) are mined from Herbert Goldstein's textbook 'Classical Mechanics', 2nd edition.
+Friction is one of the earliest examples of that is discussed in which action-reaction seems to be violated.  Energy is bled out of the system and the motion eventually comes to a halt.  The prototype example is the damped harmonic oscillator.  Its equation of motion is given by
 
-The single most important 
-\[ E = T + V = \frac{1}{2} m \dot {\vec v} ^2 + V(\vec r, \vec v; t) \]
+\[ m {\ddot x} + \Gamma {\dot x} + k x = 0 \; , \]
 
-\[ p_i = \frac{\partial L}{\partial {\dot q}^i} \]
+with the general solution
 
-\[ h = \frac{\partial L}{\partial {\dot q}^i} {\dot q}^i - L(q,\dot q;t) \]
+\[ x(t) = A e^{-\gamma t} \cos( \omega t + \phi ) \; , \]
 
-\[ \frac{d h}{dt} = \left( \frac{d}{dt} \frac{\partial L}{\partial {\dot q}^i} \]
+with $\gamma = \Gamma/2m$ and $\omega = \sqrt{\Gamma^2/4 m^2 - k/m}$.
 
-The Euler Lagrange equations are invariant to a basic change in coordinates from $q^i$ to
-$y^j$ of the form 
-\begin{equation}\label{ELinv_b}
-  q^i = q^i(y^j) .
-\end{equation}
-To see this first note that the from the 
-form of the transformation equation (\ref{ELinv_b}) we get
-\begin{equation}\label{ELinv_a}
-  {\dot q}^i = \frac{\partial q^i}{\partial y^j} {\dot y}^j \,
-\end{equation}
-where $\dot f = \frac{d}{dt} f$. Next note that the Lagrangian 
-$\tilde L (y^j,{\dot y}^j;t )$ in the $y^j$ coordinates 
-is related to the Lagrangian $L (q^i,{\dot q}^i;t )$ 
-in $q^i$ coordinates by virtue of a substitution of (\ref{ELinv_b}) 
-and (\ref{ELinv_a}) yielding
-\begin{equation}\label{ELinv_c}
-  \tilde L (y^j,{\dot y}^j;t ) = L (q^i(y^j),{\dot q}^i(y^j,{\dot y}^j);t ) .
-\end{equation}
-The parts of the Euler-Lagrange equation in terms
-of the $y^j$ coordinates in relation to the $q^i$ coordinates are
-\begin{equation}\label{ELinv_d}
-  \frac{\partial \tilde L}{\partial y^j} =    \frac{\partial L}{\partial q^i}        \frac{\partial q^i}{\partial y^j} 
-                                        +  \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial y^j}
-\end{equation}
-and
-\begin{equation}\label{ELinv_e}
-  \frac{\partial \tilde L}{\partial {\dot y}^j} = \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial {\dot y}^j} .
-\end{equation}
-Now substituting (\ref{ELinv_d}) and (\ref{ELinv_e}) into the Euler-\\Lagrange equations
-yields
-\begin{eqnarray}\label{ELinv_f}
-  \frac{d}{dt} \left( \frac{\partial \tilde L}{\partial {\dot y}^j } \right) - \frac{\partial \tilde L}{\partial y^j} 
-    & = &   \frac{d}{d t} \left( \frac{\partial L}{\partial {\dot q}^i} \right) \frac{\partial {\dot q}^i}{\partial {\dot y}^j} \\ \nonumber
-	&   & + \frac{\partial L}{\partial {\dot q}^i} \frac{d}{dt} \left( \frac{\partial {\dot q}^i}{\partial {\dot y}^j} \right) \\ \nonumber
-    & = & - \frac{\partial L}{\partial q^i}        \frac{\partial q^i}{\partial y^j} 
-	      - \frac{\partial L}{\partial {\dot q}^i} \frac{\partial {\dot q}^i}{\partial y^j} .\nonumber
-\end{eqnarray}
-But from (\ref{ELinv_a}) $ {\partial {\dot q}^i}/{\partial {\dot y}^j} = {\partial q^i}/{\partial y^j}$ and thus the second and
-fourth terms in (\ref{ELinv_f}) cancel, leaving
-\begin{equation}\label{ELinv_g}
-  \frac{d}{dt} \left( \frac{\partial \tilde L}{\partial {\dot y}^j } \right) - \frac{\partial \tilde L}{\partial y^j} = 
-  \left[ \frac{d}{d t} \left( \frac{\partial L}{\partial {\dot q}^i} \right) - \frac{\partial L}{\partial q^i} \right] 
-  \frac{\partial q^i}{\partial y^j} .
-\end{equation}
-Using the definition $\Xi_i = \frac{d}{dt}\left(\frac{\partial L}{\partial \dot q^i} \right) - \frac{\partial L}{\partial q^i}$,
-Eq. (\ref{ELinv_g}) takes on the more obvious form of
-\begin{equation}\label{ELinv_h}
-  \Xi_{\tilde j} = \Xi_i {\Lambda^i}_{\tilde j}
-\end{equation}
-which shows that the Euler-Lagrange equations transform like the components of a covariant vector.
+It is natural to ask where does the energy go?  In this model, the energy disappears with no account as to where and how.  Of course, the accepted answer is straightfoward enough.  The energy goes into heat; into degrees of freedom not directly tracked by this model.  There is balance on the action-reaction front.  There is a reaction force of the oscillator on the environment and it is this force which transfers the energy to the surroundings.
+
+While this accepted answer is known to virtually everybody whose take a physics class, it is worth pausing to consider that it wasn't neccessarily obvious to those who first grapple with this problem nor is it obvious to the beginner who is introduced to it.  In fact, it is very difficult to find a detailed argument that traces through all of the evidence in a logical fashion.  It is simply common knowledge supported by our belief in the balance of action and reaction.
+
+Case 2 - Driving forces
+
+The second case, which is actually closely related to the first, involves a driving force that maintains some aspect of the system.  Energy, momentum, and/or angular momentum enter and leave the system without being explicitly being tracked.  The best example of such a system, is the circular restricted three-body problem.  There are numerous applications of this model to spaceflight, with many missions exploiting the $L_1$ and $L_2$ Lagrange points.
+
+In the circular-restricted three-body problem, two massive bodies are in orbit around their common barycenter.  This motion honors action-reaction perfectly with the gravitational force between the bodies being equal and opposite.  The 'forced motion' which breaks action-reaction, takes place in the idealization where a test particle is introduced into the system.  The test particle is thought to be so small that its back-reaction on the motion of the two bodies can be ignored.  The equation of motion is
+
+\[  \ddot {\vec r} = m_1 \frac{\vec r_1 - \vec r}{|\vec r_1 - \vec r|^3} + m_2 \frac{\vec r_2 - \vec r}{|\vec r_2 - \vec r|^3} \; ,\]
+
+with the motion of the primaries given by 
+
+\[ \vec r_1 = m_2 L \left( \cos(\omega t) \hat \imath + \sin(\omega t) \hat \jmath \right) \]
+
+and 
+
+\[ \vec r_2 = -m_1 L \left( \cos(\omega t) \hat \imath + \sin(\omega t) \hat \jmath ) \right) \]
+
+and with
+
+\[ \omega = \frac{G(m_1 + m_2)}{L^3} \; . \]
+
+That the motion of $m_1$ and $m_2$ are set by their interaction with no influence from the test particle is the source of the driving force.  So by construction, the model violates Newton's third law.    
+
+But often treatments of the circular-restricted three-body problem confuse this simple point by dwelling on the conservation of the Jacobi constant.  This conservation is clearly an important point as it help in the understanding of the global properties of the solutions.  Nonetheless, discussions about its importance rarely emphasize that while the model violates action-reaction, real physical situations do not.  The conservation of the Jacobi constant is a useful tool but it does not actually occur in nature.  Rather a close approximation results.  While this distinction may seem subtle in theory it is quite important in practice - real physical situations cannot be expected to exactly conserve the Jacobi constant.
+
+Case 3 Velocity-Dependent Forces
+
+The case of velocity-dependent forces is perhaps the most confusing member of this list.  There are two reasons for this.  The first is that the physics literature usually employs this term to mean only one kind of velocity-dependent force: the force of magnetism.  Second, the force of magnetism cannot be studied without direct analysis of the fields that act as intermediaries.  This latter point should be one of clarity in the community when in fact it is often one of confusion.
+
+Case in point, the discussion in Chapter 1 of Goldstein's Classical Mechanics concerning the weak and strong form of action-reaction pairs.  Goldstein has this interesting point to make about action and reaction
+
+"...[T]he Biot-Savart law indeed may violate both forms of the action and reaction law.*"
+
+He goes on to say that 
+
+"Usually it is then possible to find some generalization of ${\mathbf P}$ or ${\mathbf L}$ that is conserved.  Thus, in an isolated system of moving charges it is the sum of the mechanical angular momentum and the electromagnetic "angular momentum" of the field is conserved."
+
+Of course, this is eactly the well-known conservation law discussed in a previous post on Maxwell's equations.  There is no reason to erode the confidence in the reader by the inclusion of quotes around the field angular momentum.  
+
+The situation is somewhat relieved by a footnote that attempts to give concrete scenarios.  There are two of them and this post will deal with them in turn.
+
+The first part states
+
+"If two charges are moving uniformly with parallel velocity vectors that are not perpendicular to the line joing the charges, then the mutual forces are equal and opposite but do not lie along the vector between the charges"
+
+which, diagrammitically, looks like
+
+<picture>
+
+Since there are only two particles, the most economically description has their motion take place in a plane.  The parallel velocity vector is 
+
+\[ \hat v = \cos(\alpha) \hat \imath + \sin(\alpha) \hat \jmath \]
+
+and the separation vector between them is
+
+\[ \vec r_{12} = \vec r_{1} - \vec r_{2} = \rho \hat \jmath \; .\]
+
+The combined electrostatic and magentic force on particle 1 due to particle 2 is
+
+\[ \vec F_{12} = \frac{q^2}{4 \pi \rho^2} \left[ \mu_0 \hat v \times ( \hat v \times \hat y ) - \frac{1}{\epsilon_0} \hat y \right] \; .\]
+
+Substituting in the form of $\hat v$ and simplifing gives
+
+\[ \vec F_{12} = \frac{q^2}{4 \pi \rho^2} \left[ \mu_0 \left( \sin(\alpha) \cos(\alpha) \hat \imath - \sin^2(\alpha) \hat \jmath \right) - \frac{1}{\epsilon_0} \hat y \right] \ ;. \]
+
+Since the only thing that changes in computing the force on particle 2 due to particle 1 is the sign on the relative position vector it is easy to see that
+
+\[ \vec F_{21} = -\vec F_{12} \]
+
+and action-reaction is honored.  However, this force is action-reaction in its weak form where the forces don't lie along the vector joining the two particles.  This conclusion is best supported by computing the $x$-component of the force
+
+\[ \vec F_{12} \cdot \hat \imath = \frac{q^2}{4 \pi \rho^2} \mu_0 \sin(\alpha) \cos(\alpha) \; , \]
+
+which is zero for only a few isolated angles.
+
+The second part of the footnote states
+
+"Consider, further, two charges moving (instantenously) so as to "cross the T", i.e., one charge moving directly at the other, which in turn is moving at right angles to the first.  Then the second charge exerts a nonvanishing force on the first, without experiencing any reaction force at all."
+
+The scenario here can be pictured as
+
+<picture>
+
+Now the statement in this footnote is clearly gibberish and it is corrected in the 3rd edition to change 'nonvanishing force' to 'nonvanishing magnetic force', so we'll focus solely on magentic force.
+
+From the Biot-Savart law the magnetic force on particle 1 due to particle 2 is 
+
+\[ \vec F_{12} = -\frac{\mu_0 q^2 v^2}{4 \pi \rho^2} \hat \imath \times ( \hat \jmath \times \hat \jmath ) = 0 \]
+
+while the force on 2 due to 1 is 
+
+\[ \vec F_{21} =  \frac{\mu_0 q^2 v^2}{4 \pi \rho^2} \hat \jmath \times ( \hat \imath \times \hat \jmath ) = \frac{\mu_0 q^2 v^2}{4 \pi \rho^2} \hat \imath \neq 0 \; .\]
+
+Clearly action-reaction seems violated but strictly speaking this is not true.  What it should be emphasized is that there is a 'third body' in the mix, the electromagnetic field and that the action-reaction can be restored (although not quite point-wise) by looking for additional degrees of freedom.
+
 
 
 \end{document}

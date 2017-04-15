@@ -23,7 +23,7 @@ The twisted cubic, which is the star in this month's drama, is defined as a curv
 
 \[ \vec r(t) = t \hat e_x + t^2 \hat e_y + t^3 \hat e_z \; , \]
 
-where the parameter $t$ can be regarded as time.
+where the parameter $$t$$ can be regarded as time.
 
 Since they will be needed later, the velocity and acceleration of the twisted cubic are given by
 
@@ -35,7 +35,7 @@ and
 
 respectively.
 
-The twisted cubic, shown in the following figure for the range $t \in [-2,2]$, has an unusual shape that is best revealed by projecting to the three coordinate planes.  In the $x-y$ plane, the curve's projection is a simple parabola (i.e. $y(x) = x^2$).  In the $x-z$ plane, the curve's projection is a simple cubic (i.e. $z(x) = x^3$).  Nothing amazing here.  The interest lies in the projection into the $y-z$ plane where a 'cusp' appears when $t$ passes through the value of 0.
+The twisted cubic, shown in the following figure for the range $$t \in [-2,2]$$, has an unusual shape that is best revealed by projecting to the three coordinate planes.  In the $$x-y$$ plane, the curve's projection is a simple parabola (i.e. $$y(x) = x^2$$).  In the $$x-z$$ plane, the curve's projection is a simple cubic (i.e. $$z(x) = x^3$$).  Nothing amazing here.  The interest lies in the projection into the $$y-z$$ plane where a 'cusp' appears when $$t$$ passes through the value of 0.
 
 To apply the method moving frames, the VBN and RIC coordinate frames will be used.  VBN is not minimal and RIC is, so there is a nice opportunity to compare and contrast.
 
@@ -51,17 +51,17 @@ and
 
 \[ \hat B = \hat V \times \hat N \; .\]
 
-Using the general results derived last time, the derivative of $\hat V$ is expressed as 
+Using the general results derived last time, the derivative of $$\hat V$$ is expressed as 
 
 \[ \frac{d \hat V}{dt}  = \frac{\vec a}{|\vec v|} - \vec v \left( \frac{\vec v \cdot \vec a}{|\vec v|^3} \right) \; .\]
 
-It will be convenient to define $\vec L = \vec r \times \vec v$.  Doing so allows for the time derivative of $\hat N$ to be compactly written as
+It will be convenient to define $$\vec L = \vec r \times \vec v$$.  Doing so allows for the time derivative of $$\hat N$$ to be compactly written as
 
 \[ \frac{d \hat N}{dt} = \frac{\vec r \times \vec a}{|\vec L|} - \vec L \left( \frac{\vec L \cdot \dot{\vec L}}{|\vec L|^3} \right) \; ,\]
 
-where $\dot{\vec L} = \vec r \times \vec a$.
+where $$\dot{\vec L} = \vec r \times \vec a$$.
 
-The time derivative of $\hat B$ is then given in terms of $\hat V$ and $\hat N$ and their derivatives as 
+The time derivative of $$\hat B$$ is then given in terms of $$\hat V$$ and $$\hat N$$ and their derivatives as 
 
 \[ \frac{d \hat B}{d t} = \frac{d \hat V}{d t} \times \vec N + \vec V \times \frac{d \hat N}{d t} \; .\]
 
@@ -75,28 +75,28 @@ and
 
 \[ \hat I = \hat C \times \hat R \; .\]
 
-The time derivative of $\hat R$ is 
+The time derivative of $$\hat R$$ is 
 
 \[ \frac{d \hat R}{dt}  = \frac{\vec v}{|\vec r|} - \vec r \left( \frac{\vec r \cdot \vec v}{|\vec r|^3} \right) \; .\]
 
-which is a formula analogous to the one for $\hat V$. 
+which is a formula analogous to the one for $$\hat V$$. 
 
-Since RIC's $\hat C$ is the same as VBN's $\hat N$, it's time derivative is identical with a minor change in symbols.
+Since RIC's $$\hat C$$ is the same as VBN's $$\hat N$$, it's time derivative is identical with a minor change in symbols.
 
-The time derivative of $\hat I$ is given by 
+The time derivative of $$\hat I$$ is given by 
 
 \[ \frac{d \hat I}{d t} = \frac{d \hat C}{dt} \times \hat R + \hat C \times \frac{d \hat R}{dt} \; .\]
 
-As discussed in Cross Products and Matrices, the moving frame's motion can be expressed in terms of classical angular momentum, with the mapping $\alpha \rightarrow -\omega_z$, $\beta \rightarrow \omega_y$, and $\gamma \rightarrow - \omega_x$.  
+As discussed in Cross Products and Matrices, the moving frame's motion can be expressed in terms of classical angular momentum, with the mapping $$\alpha \rightarrow -\omega_z$$, $$\beta \rightarrow \omega_y$$, and $$\gamma \rightarrow - \omega_x$$.  
 
 With this mapping in hand, one can see that minimal frames are special in that they only have two non-zero components of their angular velocity.  For the twisted cubic, the three components of the VBN angular momentum are
 
 and the three components of the RIC angular velocity are
 
 
-Note that in the VBN frame, all three components of the angular velocity are generally non-zero whereas in the RIC, $\omega_y$ is always zero.
+Note that in the VBN frame, all three components of the angular velocity are generally non-zero whereas in the RIC, $$\omega_y$$ is always zero.
 
-Also interesting is the time evolution of the magnitude of the angular velocity, $|\mathbf{\omega}|$, in the two frames.
+Also interesting is the time evolution of the magnitude of the angular velocity, $$|\mathbf{\omega}|$$, in the two frames.
 
 
 The VBN frame is generally 'rotating' more slowly than the RIC frame away from the 'origin' but quickly rises above in the vicinity.  
