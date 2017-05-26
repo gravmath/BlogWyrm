@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+
+Last month, I covered the basic ground work that established under what conditions generalized coordinates can be used in the Lagrangian formulation.  Generalized coordinates enable vast simplifications of the analysis of mechanical systems and provide for deep insight into the possible motion.  The analysis found that the permissible transformations are the point transformations 
+
+\[q^i = q^i(s^j,t) \; ,\]
+
+since these leave the Euler-Lagrange equations of motion invariant.  
+
+The next step is to examine what these transformations do to the expression of the energy. Note that no transformation can 'destroy' energy conservation - if the energy is conserved in one set of coordinates it is conserved in all coordinate systems.  But it is possible that a poor tranformation will hide the conservation of energy and that a clever transformation will reveal the conservation of a related quantity (the function $h$ to be discussed shortly) even when the energy is not conserved. 
+
+In Newtonian mechanics, the energy is given by the sum of the kinetic and potential energy (each possibly depending on $q^i$, ${\dot q}^i$, and $t$)
+
+\[ E = T + V \; .\]
+
+The corresponding quantity in Lagrangian dynamics is the $h$ function defined as
+
+\[ h = \frac{\partial L}{\partial {\dot q}^i} {\dot q}^i - L(q^j,{\dot q^j};t) \; ,\]
+
+with $L = T - V$.
+
+At first glance, it isn't at all obvious why $h$ should ever be conserved and why it can be identified as the energy, in certain circumstances.  To see the conservation properties of $h$ examine its total time derivative given by
+
+\[ \frac{d h}{d t} = \frac{d}{d t} \left(\frac{\partial L}{\partial {\dot q}^i} \right) {\dot q}^i + \frac{\partial L}{\partial {\dot q}^i} {\ddot q}^i - \frac{\partial L}{\partial q^i} {\dot q}^i - \frac{\partial L}{\partial {\dot q}^i} {\ddot q}^i - \frac{\partial L}{\partial t} \; . \]
+
+The second and fourth terms cancel and the first and third terms can be grouped so that the expression now reads
+
+\[ \frac{d h}{d t} = \left[ \frac{d}{d t} \left(\frac{\partial L}{\partial {\dot q}^i} \right) - \frac{\partial L}{\partial q^i} \right] {\dot q}^i - \frac{\partial L}{\partial t} \; . \]
+
+Physical motion requires the first term, which are the Euler-Lagrange equations, to be zero, leaving the very nice expression that 
+
+\[ \frac{d h}{dt} = \frac{\partial L}{\partial t} \; . \]
+
+Thus under some very general circumstances, $h$ is conserved if the Lagrangian, in some coordinate system, doesn't have any time dependance.  Since the allowed point transformations can be time-dependent, it is possible for $h$ to be conserved in certain generalized coordinate systems and not in others.  This is the genesis of the confusion of between $E$ and $h$ discussed in the previous post.
+ 
+Having answered the first question about the conservation properties of $h$, we now turn to when $h$ can be identified as the energy $E$.  In order not to obscure the physical points, for the bulk of this post 1-$d$ systems will be examined with the generalized coordinates being denoted as $x$ (starting Cartesian coordinate) and $q$ (arbitrary generalized coordinate).  At the end, this restriction will be relaxed.
+
+The kinetic energy, given by
+
+\[ T = \frac{1}{2} m {\dot x}^2 \; ,\]
+
+will be the key parameter, with the potential energy just coming along for the ride.
+
+Expanding on Morin (http://www.people.fas.harvard.edu/~djmorin/chap15.pdf), we examine three cases: 1) the limited point transformation $x = x(q)$, 2) the full point transformation $x = x(q,t)$, and 3) the 'forbidden' phase-space transformation $x=x(q,{\dot q})$.  In each of these cases, we exploit the fact that the transformations are invertible and so either $x$ or $q$ can be regarded as the base coordinate.  Assuming the Cartesian $x$ as a function of the generalized coordinate $q$ is simply a convenient choice.
+
+Case 1: $x = x(q)$
+
+This case is commonly encountered when the geometry of the system better matches cylindrical, spherical, or some other curvilinear coordinate system.  The velocities are related by
+
+\[ {\dot x} =  \frac{\partial x}{\partial q} {\dot q} \; , \]
+
+leading to the kinetic energy transforming as 
+ 
+\[ T = \frac{1}{2} m {\dot x}^2 \rightarrow \frac{1}{2} m \left( \frac{\partial x}{\partial q} \right)^2 {\dot q}^2 \equiv \frac{1}{2} \mu_0(q) {\dot q}^2 \; .\]
+
+Defining 
+
+\[ p_q = \frac{\partial L}{\partial {\dot q}} = \mu_0(q) {\dot q} \; , \]
+
+the expression for $h$ becomes
+
+\[ h = p_q {\dot q} - L = \mu_0(q) {\dot q}^2 - \frac{1}{2} \mu_0(q) {\dot q}^2 + V(q) \; \]
+
+Simplifying yields
+
+\[ h = \frac{1}{2} \mu_0(q) {\dot q}^2 + V(q) = T + V = E \; . \]
+
+So in the case where the point transformation is limited to exclude time dependance, $h = E$.  Since the motion is derivable from a potential, we can immediately conclude that the energy is conserved.
+
+Case 2: $ x = x(q,t)$
+
+This case is commonly encountered in rotating systems where a time-dependent transformation puts the viewpoint coincident with a co-rotating observer.  This is the trickiest of all the physical situations since the energy may or may not be conserved independently of what $h$ is doing.  These cases will be examined in detail in future posts.
+
+The velocities are related by
+ 
+\[ {\dot x} =  \frac{\partial x}{\partial q} {\dot q} + \frac{\partial x}{\partial t} \; , \]
+
+leading to the kinetic energy transforming as
+
+\[ T =  \frac{1}{2} m {\dot x}^2 \rightarrow \frac{1}{2} m \left( \frac{\partial x}{\partial q} {\dot q} + \frac{\partial x}{\partial t} \right)^2 \]
+
+Expanding and simplyfing yields the kinetic energy in generalized coordinates as 
+
+\[ T = \frac{1}{2} m \left[ \left(\frac{\partial x}{\partial q}\right)^2 {\dot q}^2 + 2 \frac{\partial x}{\partial q} \frac{\partial x}{\partial t} {\dot q} + \left(\frac{\partial x}{\partial t} \right)^2 \right] \;  \]
+
+or, more compactly as,
+
+\[ T = \frac{1}{2} \mu_0(q,t) {\dot q}^2 + \mu_1(q,t) {\dot q} + \frac{1}{2} \mu_t(q,t) \; .\]
+
+Once again defining 
+
+\[ p_q = \frac{\partial L}{\partial {\dot q}} = \mu_0(q,t) {\dot q} + \mu_1(q,t) \; , \]
+
+the expression for 
+
+\[ h = p_q {\dot q} - L = \mu_0(q,t) {\dot q}^2 + \mu_1(q,t) {\dot q} - \frac{1}{2} \mu_0(q,t){\dot q}^2 - \mu_1(q,t) {\dot q} - \frac{1}{2} \mu_t(q,t) + V(q,t) \; . \]
+
+Simplifying gives 
+
+\[ h =  \frac{1}{2} \mu_0(q,t){\dot q}^2 - \frac{1}{2} \mu_t(q,t) + V(q,t) \neq T + V \; .\]
+
+So in this case, $h$ is not identified with the energy.  Whether $h$ or $E$ are conserved is a matter for case-by-case analysis.
+
+Case 3:  \[ x = x(q,{\dot q}) \]
+
+This final case is more of a curiosity rather than a serious exploration.  The case is 'forbidden' by last month's analysis since it doesn't preserve the transformation properties of the Euler-Lagrange equations.  Nonetheless, it is interesting to see what would happend to $h$ should this transformation be allowed.
+
+The velocities are related by
+
+\[ {\dot x} =  \frac{\partial x}{\partial q} {\dot q} + \frac{\partial x}{\partial {\dot q}} {\ddot q} \]
+
+leading to the kinetic energy becoming 
+
+\[ T = \frac{1}{2} \mu_0(q,{\dot q}) {\dot q}^2 + \mu_3(q,{\dot q}) {\dot q}{\ddot q} + \frac{1}{2} \mu_4(q,{\dot q}) {\ddot q}^2 \; .\]
+
+Following the same process above yields
+
+\[ h = \frac{1}{2} \mu_0(q,{\dot q}) {\dot q}^2 - \frac{1}{2} \mu_4(q,{\dot q}) {\ddot q}^2 + V(q,{\dot q}) \neq T + V \; .\]
+
+Finally a note on relaxing the restriction to 1-$d$.  In multiple dimensions, the velocities in the most general case transform as
+
+\[ {\dot s}^j = \frac{\partial s^j}{\partial q^i} {\dot q}^i + \frac{\partial s^j}{\partial t} \; .\]
+
+Following the same method as above, the kinetic energy will take the form
+
+\[ T = \frac{1}{2} \mu_0^i ({\dot q}^i)^2 + \mu^{ij} {\dot q}^i {\dot q}^j + \mu_1^i {\dot q}^i + \frac{1}{2} \mu_t^i \; ,\]
+
+using the same shorthand notation as above.
+
+The only new feature (beyond the trivial decoration of the $q$s with an index and the implied summation) is the cross-term $\mu^{ij} {\dot q}^i {\dot q}^j$.  These terms will disappear (as do all the terms linear in a given $q$) from $h$ since
+
+\[ p_{{\dot q}^i} = \mu^{ij} {\dot q}^j \]
+
+will yield a positive term
+
+\[ p_{{\dot q}^i} {\dot q}^i =  \mu^{ij} {\dot q}^i {\dot q}^j \] 
+
+that is exactly cancelled by the term coming from $-L$.  Everything else follows through as in the 1-$d$ case.
+
+\[ \frac{d}{dt} \left( \frac{\partial L}{ww} \right.\]
+
+\[ S = \int dt L \] 
+\[ p_i = \frac{\partial L}{\partial {\dot q}^i} \]
+
+\[ h = \frac{\partial L}{\partial {\dot q}^i} {\dot q}^i - L(q,\dot q;t) \]
+
+\[ \frac{d h}{dt} = \left( \frac{d}{dt} \frac{\partial L}{\partial {\dot q}^i} \right. \]
+
+
+\end{document}
