@@ -1,0 +1,100 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+
+Constraints in dynamical systems are important in physics for two reasons.  First, they show in a variety of real-world mechanical systems with practical applications.  In addition, the notion of a constraint, usually of a more abstract variety, is an essential ingredient in modern physical systems like quantum field theory and general relativity.  This brief post is meant to cover the basic theory of constraints in classical physics as a precursor to some future posts on specific systems.  The approach and the notation is strongly influenced by Theoretical Mechanics by Murray Spiegel, although the arrangement, presentation, and logical flow are my own.
+
+The proper setting for understanding constraints in classical mechanics is the Lagrangian point-of-view and the primary idea for carrying out this program is the notion of generalized coordinates.  By expressing the work-energy theorem in generalized coordinates, we will not only arrive at the Euler-Lagrange equations but will find the proper place in which to put the constraints into the formalism through the use of Lagrange multipliers.
+
+The kinetic energy for a multi-particle system is expressed in Cartesian coordinates as 
+
+\[ T = \sum_n \frac{1}{2} m_n {\dot {\vec r}}_n \cdot {\dot {\vec r}}_n \; , \]
+
+where the index $$n$$ labels each particle.
+
+The partial derivatives of $$T$$ with respect to the generalized coordinate and velocity are:
+
+\[ \frac{\partial T}{\partial q_{\alpha}} = \sum_n m_n {\dot {\vec r}}_n \cdot \frac{\partial {\dot {\vec r}}_n}{\partial q_{\alpha}} \]
+
+and
+
+\[ \frac{\partial T}{\partial {\dot q}_{\alpha}} = \sum_n m_n {\dot {\vec r}}_n \cdot \frac{\partial {\dot {\vec r}}_n}{\partial {\dot q}_{\alpha}} \; .\]
+
+Lagrange's cleverness comes is recognizing two somewhat non-obvious steps.  First is that one can simplify the last expression by noting that
+
+\[ {\dot {\vec r}}_n = \frac{\partial {\vec r}_n}{\partial q_{\alpha}} {\dot q}_{\alpha} + \frac{\partial {\vec r}_n}{\partial t} \; , \]
+
+which lead immediately to the cancellation-of-dots that says
+
+\[ \frac{\partial {\dot {\vec r}}_n}{\partial {\dot q}_{\alpha}} = \frac{\partial {{\vec r}}_n}{\partial {q}_{\alpha}} \; .\]
+
+This results then simplifies 
+
+\[ \frac{\partial T}{\partial {\dot q}_{\alpha}} = \sum_n m_n {\dot {\vec r}}_n \cdot \frac{\partial {{\vec r}}_n}{\partial {q}_{\alpha}} \; .\]
+
+The second of Lagrange's steps is to recognize that taking the total time-derivative of that same term yields 
+
+\[ \frac{d}{dt} \left( \frac{\partial T}{\partial {\dot q}_{\alpha}} \right) = \sum_n m_n {\ddot {\vec r}}_n \cdot \frac{\partial {\vec r}_n} \cdot {\partial q_\alpha} + \sum_n m_n {\dot {\vec r}}_n \frac{\partial {\dot {\vec r}}_n}{\partial q_{\alpha}} \; .\]
+
+The second part of this expression nicely cancels the derivative of the kinetic energy with respect to the generalized coordinate and so we arrive at the identity
+
+\[ \frac{d}{dt} \left( \frac{\partial T}{\partial {\dot q}_{\alpha}} \right) - \frac{\partial T}{\partial q_{\alpha}} = \sum_n m_n {\ddot {\vec r}}_n \cdot \frac{\partial {\vec r}_n}{\partial q_\alpha} \; . \]
+
+Defining the left-hand side compactly as 
+
+\[ Y_{\alpha} \equiv \frac{d}{dt} \left( \frac{\partial T}{\partial {\dot q}_{\alpha}} \right) - \frac{\partial T}{\partial q_{\alpha}} \; \]
+
+gives
+
+\[ Y_{\alpha} = \sum_n m_n {\ddot {\vec r}}_n \cdot \frac{\partial {\vec r}_n}{\partial q_\alpha} \; . \]
+
+Like Lagrange, we can conclude that the presence of the accelerations in the right-hand side is related to the sum of the forces.  However, it would be incorrect to conclude that each individual force can be teased out this the right-hand side as will be discussed below.
+
+Before trying to make sense of the $$Y_{\alpha}$$'s, examine the forces in generalized coordinates via the differential work, which is given by
+
+\[ dW = \sum_n {\vec F}_n \cdot  d {\vec r}_n = \sum_n {\vec F}_n \cdot \sum_{\alpha} \frac{\partial {\vec r}_n}{\partial q_\alpha} dq_{\alpha} \; . \]
+
+Regrouping this last term gives the final expression
+
+\[ dW = \sum_\alpha \left( \sum_n {\vec F}_n \cdot \frac{\partial {\vec r}_n}{\partial q_\alpha} \right) dq_\alpha \equiv \sum_\alpha \Phi_\alpha d q_\alpha \; . \]
+
+Forming the sum
+
+\[ \sum_{\alpha} Y_{\alpha} dq_{\alpha} = \sum_{\alpha} \left( \sum_n m_n {\ddot {\vec r}}_n \cdot \frac{\partial {\vec r}_n}{\partial q_\alpha} \right) dq_\alpha \; ,\]
+
+yields an expression for the differential work as well, since from the Work-Energy theorem $$dW = dT$$.
+
+Subtracting these two expressions gives 
+
+\[ \sum_{\alpha} \left( Y_{\alpha} - \Phi_{\alpha} \right) dq_\alpha = \sum_{\alpha} \left( \sum_n m_n \left[ {\ddot {\vec r}}_n - {\vec F}_n \right] \cdot \frac{\partial {\vec r}_n}{\partial q_\alpha} \right) dq_\alpha = 0 \; .\]
+
+One might be tempted to conclude that $$Y_\alpha = \Phi_\alpha$$ but this would be erroneous.  All that can be concluded is that the projections of each of the two terms along the constrained surface are the same.  The following figure shows a simple geometric case where two vectors (blue and green) (denoting same the generalized accelerations and the generalized forces) are both perpendicular to the red vector (denoting the motion of the system consistent with the constraint) without being equal.  If, and only if, there are no constraints in the system does $$Y_\alpha = \Phi_\alpha$$.
+
+If the constraints are integrable, that is to say they can be expressed in such a way that one generalized coordinate can be eliminated by expressing it in terms of the others, then a straight substitution will eliminate the constraint and no additional steps are needed.  If that step can't be carried out, then the use of Lagrange multipliers are required as follows.
+
+Suppose that there are $$m$$ constraints of the form
+
+\[ A_\alpha q_\alpha + A dt = 0 \; ;  B_\alpha q_\alpha + B dt = 0 \; ;  C_\alpha q_\alpha + C dt = 0 \; \ldots \; \]
+
+and, that any instant, the constraints are satisfied so that the $$dt$$ term can be set to zero.  Then these constraint equations can be added together in an undetermined, as yet, linear combination
+
+\[ \sum_\alpha ( \lambda_1 A_\alpha + \lambda_2 B_\alpha + \lambda_3 C_\alpha + \cdots ) dq_\alpha = 0 \; .\] 
+
+These $$m$$ equations augment the original equation to yield the augmented form
+
+\[ \sum_{\alpha} (Y_\alpha - \Phi_\alpha - \lambda_1 A_\alpha - \lambda_2 B_\alpha + \lambda_3 C_\alpha + \cdots ) dq_\alpha = 0 \; .\]
+
+These equations, when regrouped, form two systems of equations.  The first system can be regrouped and rewritten, using the constraint equations, so that we can eliminate $$m$$ of the $$dq_\alpha$$ (say $$dq_1,\ldots,dq_m$$) and then solve that system for the Lagrange multipliers. Returning to the augmented form, we can set the coefficients of the dependent terms equal to zero.  Now the augmented form reduces to
+
+\[ \sum_{\alpha'} (Y_{\alpha'} - \Phi_{\alpha'} - \lambda_1 A_{\alpha'} - \lambda_2 B_{\alpha'} + \lambda_3 C_{\alpha'} + \cdots ) dq_\alpha = 0 \; ,\]
+
+where the prime indicates that the sum is restricted to the independent terms, which allows us to immediately conclude that
+
+\[ Y_\alpha - \Phi_\alpha - \lambda_1 A_\alpha - \lambda_2 B_\alpha + \lambda_3 C_\alpha + \cdots  = 0 \; \]
+
+for all $$\alpha$$, both the dependent and independent set.  
+
+Next post, I'll explore this framework with some instructive examples taken from the classical mechanics literature.
+
+ 
+\end{document}
