@@ -1,0 +1,107 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+There is a widespread belief about politicians and used car salesmen that both species can often speak with a lot of gusto, using sizeable portions of the English language, without actually saying much or anything at all.  
+
+Sometimes there is a certain charm in circumlocution.  For example, the legendary speech by Noah 'Soggy' Sweat Jr. certainly can be whittled down to 'it all depends' but at the loss of a great deal of fun and verve.  
+
+On other occasions, ambiguity and double-speak can be misleading or even down-right deadly.  An excellent example of such a situation is in the following vivid exchange taken from Isaac Asimov's Foundation.  
+
+For those unfamiliar with this recognized science fiction classic, the story is set far in the future of mankind in which a vast galactic empire is beginning its decline.  The Foundation is a large colony of scientists and researchers who the empire has exiled to the galactic fringe in order that they may compile an encyclopedia that catalogs the knowledge of the race in advance of the collapse.  In actuality, the empire has been tricked into forcing their exile so that the colony can become the nucleus around which the next empire coellesces.  
+
+The out-of-the-way planet that the Foundation calls home sits within a set of smaller star systems that are breaking away from the empire as the latter's influence and dominion recedes.  The following excerpt comes from a strategy meeting where the Foundation's leaders are trying to determine how to respond to the ulimatum they've just received from Anacreon, the largest of the breakway states, in light of recent diplomatic visits of the delegations from Anacreon and the Galactic Empire. 
+
+The exchange starts with Salvor Hardin, the Foundation's politically-savy mayor, trying to convince the board of Trustees, who oversee the completion of the encyclopedia, just how precarious their situation is.  Hardin's position is that the Board's appeal to the Empire for protection was the cause of the threat from Anacreon.
+
+%<div class = "myQuoteDiv">
+Said Yate Fulham: "And just how do you arrive at that remarkable conclusion, Mr. Mayor?"
+
+"In a rather simple way. It merely required the use of that much-neglected commodity – common sense. You see, there is a branch of human knowledge known as symbolic logic, which can be used to prune away all sorts of clogging deadwood that clutters up human language."
+
+"What about it?" said Fulham.
+
+"I applied it. Among other things, I applied it to this document here. I didn't really need to for myself because I knew what it was all about, but I think I can explain it more easily to five physical scientists by symbols rather than by words."
+
+... 
+
+"The message from Anacreon was a simple problem, naturally, for the men who wrote it were men of action rather than men of words. It boils down easily and straightforwardly to the unqualified statement,...,which in words, roughly translated, is, 'You give us what we want in a week, or we take it by force.'"
+
+"All right." Hardin replaced the sheets. "Before you now you see a copy of the treaty between the Empire and Anacreon – a treaty, incidentally, which is signed on the Emperor's behalf by the same Lord Dorwin who was here last week – and with it a symbolic analysis."
+
+"As you see, gentlemen, something like ninety percent of the treaty boiled right out of the analysis as being meaningless, and what we end up with can be described in the following interesting manner:
+
+"Obligations of Anacreon to the Empire: None!
+
+"Powers of the Empire over Anacreon: None!"
+%</div>
+
+Later on the group discusses a similar analysis of the visits from the empire's representative Lord Dorwin
+
+%<div class = "myQuoteDiv">
+"You know, that's the most interesting part of the whole business. I'll admit I had thought his Lordship a most consummate donkey when I first met him – but it turned out that he was actually an accomplished diplomat and a most clever man. I took the liberty of recording all his statements."
+
+"... The analysis was the most difficult of the three by all odds. When Holk, after two days of steady work, succeeded in eliminating meaningless statements, vague gibberish, useless qualifications – in short, all the goo and dribble – he found he had nothing left. Everything canceled out."
+
+"Lord Dorwin, gentlemen, in five days of discussion didn't say one damned thing, and said it so you never noticed."
+%</div>
+
+Not all applications of symbolic logic are as dramatic and interesting as the one Asimov depicts.  Nonetheless, even though there may not be any cosmic significance, symbolic logic can be a tool that makes life easier and reasoning and comprehension more clear.
+
+Suppose, for example, that you have a friend who says
+
+%<div class = "myQuoteDiv">
+If it is raining and either it is not raining or it is snowing then it is snowing.
+%</div>
+
+What do you make of that statement.  What does it mean?  Does it ever make sense?  Trying to parse his sentence is nearly impossible - at least in its fully decorated language form.  Symbolic logic let's us, much like Mayor Hardin, strip away all the nonsense and come to some supported conclusion about your friend's ability to communicate.
+
+To apply it, first take the basic pieces and represent them with simple symbols.  For this example, let $p$ mean 'it is not raining' and $q$ 'it is snowing.  Your friend's cryptic statement is symbolically represented as:
+
+\[ \left[ \neg p \wedge (p \vee q) \right] \rightarrow q \; ,\]
+
+where $\neg$ means not (i.e. $\neg p$ means it is raining), $\wedge$ is the logical and, $\vee$ is logical or, and $\rightarrow$ is the usual if-then relation.
+
+Having translated the cryptic statement into symbols, we can now manipulate in terms of the standard rules of propositional logic.  
+
+The first step is to rewrite the if-then implication in its 'or' form
+
+\[ \neg \left[ \neg p \wedge (p \vee q) \right] \vee q \; .\]
+
+Then use de Morgan's rule to bring the negation inside
+
+\[ \left[ \neg \neg p \vee \neg (p \wedge q) \right] \vee q \; .\]
+
+Next use the double negation to simplify the first term
+
+\[ \left[ p \vee \neg(p \wedge q) \right] \vee q \]
+
+and then use de Morgan's rule again
+
+\[ \left[ p \vee (\neg p \vee \neg q) \right] \vee q \; . \]
+
+The law of distribution is the next step 
+
+\[ \left[ (p \vee \neg p) \vee (p \vee \neg q) \right] \vee q \; .\]
+
+From the basic laws of logic $p \vee \neg p \equiv T$ since a proposition is either true or false so that that same proposition or not that proposition is always true (a tautology).  This observation yields
+
+\[ \left[ T \vee (p \vee \neg q) \right] \vee q \; . \]
+
+Next apply $T \vee p \equiv p $, and our original statement is now 
+
+\[ (p \vee \neg q) \vee q \; ,\]
+
+which in English reads something like 'either it is raining or it is not snowing or it is snowing'.  Still a bit confusing to parse but certainly much simpler.  Fortunately, we can continue analyzing the statement further.
+
+Using distribution again gives
+
+\[ (p \vee q) \vee (\neg q \vee q ) \; , \]
+
+which becomes 
+
+\[ (p \vee q ) \vee T \]
+
+when $\neg q \vee q \equiv T$ is used.
+
+Finally, as noted earlier, $ anything \vee T \equiv T$ and the original statement boils down always being true.  Your friend has uttered a tautology and, for one brief moment, shown himself to be worthy of being called 'an accomplished diplomat and a most clever man' who is able to avoid saying 'one damned thing' and of saying 'it so you never noticed'.
+\end{document}
