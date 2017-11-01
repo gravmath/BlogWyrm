@@ -1,0 +1,283 @@
+\documentclass[12pt]{article}
+
+\begin{document}
+This post continues the multi-part analysis of the role of constraints in mechanical systems.  Last post demonstrated that Newton's method is hopelessly overmatched in the situations where there are any but the most simplistic constraints (e.g. the inclined plane).  This post is going to look at the tale of two surfaces, one a cone and the other a paraboloid, and how the constraint of a particle moving along each surface is incorporated into the dynamcis.  Both constraints are holonomic and, in principle, can be eliminated by the same strategy used in the bead-on-a-wire case used in the last post.  However, what we will find, is that it is more convenient to use that strategy only for the cone.  For the paraboloid, there will be great utility in accounting for the constraint in terms of Lagrange multipliers.
+
+Note that while Lagrange multipliers are essential for including non-holonomic constraints, there is no rule that prevents their use when it is convenient to do so.  
+
+The surfaces are shown here
+
+and it is useful to examine what is in common between the two shapes before looking for the differences.  Since both are azimuthally symmetric, the proper generalized coordinates are the radial distance, $\rho$, the azimuthal angle, $\phi$, and the height, $z$, above the $x$-$y$ plane.
+
+In these coordinates, the Lagrangian takes the form
+
+\[ L = \frac{1}{2} m \left( \dot \rho^2 + \rho^2 \dot \phi^2 + \dot z^2 \right) - m g z \; ; \]
+
+the only difference between the two cases being the relation between $\rho$ and $z$.
+
+Since neither the gravitational force nor the constraint depends on $\phi$, its conjugate momentum 
+
+\[ p_{\phi} = \frac{\partial L}{\partial \dot \phi} = m \rho^2 \dot \phi \]
+
+is conserved and can be used to eliminate $\dot \phi$ from the equations of motion using 
+
+\[ \dot \phi = \frac{\ell}{m \rho^2} \; , \]
+
+where $\ell$ is the arbitrary constant chosen to represent the conserved magnitude of the angular momentum.
+
+The constraint in each case takes the form of 
+
+\[ f(\rho,z) = 0 \; , \]
+
+which can then be used to eliminate one of the dynamical degrees of freedom ($\rho$ or $z$) in the Lagrangian, either directly or though the use of Lagrange multipliers.
+
+For this analysis, we will content ourselves with getting the equations of motion, makeing some elementary observations, and for looking at the period of small oscillations about constant circular motion.  The later objective is designed to make for easy comparison with the usual mechanics textbooks.
+
+The Cone
+
+The equation of the constraint is given by 
+
+\[ c^2 z^2 = x^2 + y^2 \; , \]
+
+where the constant $c$ is related to the geometry of the cone 
+
+\[ c = \tan \alpha \; , \]
+
+with $\alpha$ being the half angle.
+ 
+In cylindrical coordinates, the constraint equation becomes 
+
+\[ c z = \rho \rightarrow c z - \rho = 0 \; . \]
+
+The differential of this equation is
+
+\[ c dz - d \rho = 0 \]
+
+and the Lagrangian now reads
+
+\[ L = \frac{1}{2} m \left((c^2 + 1) \dot z^2 + c^2 z^2 \dot \phi^2 \right) - m g z \; .\]
+
+The decision to eliminate $\rho$ in favor of $z$ is chosen for later convenience in comparison with the paraboloid but is otherwise arbitrary.  Either choice works and results in about the same amount of work.
+
+The conjugate momentum is
+
+\[ p_z = (c^2+1) m \dot z \; \]
+
+and the resulting equation of motion (once the angular momentum conservation is used) is 
+
+\[ m \ddot z = \frac{\ell^2}{c^2 (c^2+1) m z^3} - \frac{mg}{c^2+1}  \equiv F_z \; .\]
+
+The effective potential is 
+
+\[ V_{eff} = - \int  F_z dz = \frac{\ell^2}{c^2(c^2+1) m z^2} + \frac{mgz}{c^2+1} \; . \]
+
+Steady-state motion occurs at an equilibrium defined by those conditions where the first derivative of the effective potential (or alternatively the generalized force $Q_z$) are zero.  This condition can be satisfied by a family of circular motions at height $h$ with angular momentum satisfying
+
+\[ \ell^2  = \frac{m^2 g h^3}{c^2} \; .\]
+
+Calculating the second derivative of the effective potential gives the frequency of small oscillation about this steady-state circular motion:
+
+\[ \left. \frac{\partial^2 V_{eff}}{\partial z^2} \right|_{z=h} = \frac{3 \ell^2}{c^2 (c^2+1) m h^4} \;  \]
+
+implies
+
+\[ \omega_{osc} = \sqrt{ \frac{3}{c^2(c^2+1)} } \left( \frac{\ell}{m h^2} \right) \; .\]
+
+
+The frequency of small oscillations about this family of equilibria derives from setting the $V_{eff} = 0 $
+
+
+The Paraboloid
+
+The equation for the constraint is 
+
+\[ c z = x^2 + y^2 = \rho^2  \; , \]
+
+whose first differential is
+
+\[ c dz - 2 \rho d\rho = 0 \; .\]
+
+Since the generalized coordinates $\rho$ and $z$ are not of the same order in the constraint equation employ Lagrange multipliers.   in the Lagrangian
+
+\[ L = \frac{1}{2} m \left( \dot \rho^2 + \rho^2 \dot \phi ^2 + \dot z^2 \right) - mgz + \lambda (c z - r^2) \; .\]
+
+The resulting equations of motion are
+
+\[m \ddot \rho - m \rho \frac{(\ell/m)^2}{\rho^4} = - \lambda 2 \rho \; \]
+
+and
+
+\[m \ddot z + m g = \lambda c \; , \]
+
+where the 
+\[ \lambda = \frac{m g c}
+
+\[ V_{eff} = \frac{\ell^2}{2 m \rho^2} + \rho^2 \frac{m g}{c} \; .\]
+
+\[ \rho^4_{circ} = \frac{\ell^2 c}{2 m^2 g} \; .\]
+
+\[ k_{eff} = 8 \frac{m g}{c} \; . \]
+
+\[ \omega_{osc} = 2 \sqrt{ \frac{2 g}{c} } = 2 \omega \; .\]
+
+
+This post continues the multi-part analysis of the role of constraints in mechanical systems.  Last post demonstrated that Newton's method is hopelessly overmatched in the situations where there are any but the most simplistic constraints (e.g. 1-dimensional motion down an inclined plane).  This post is going to look at motion on a paraboloid comparing and contrasting the approach to obtaining the solutions using two different methods: 1) elimination of the constraint by direct substitution in the Lagrangian and 2) the use of Lagrange multipliers.  Since the constraint surface dictates a relationship between the position components and not the velocities (in a non-integrable way), it is holonomic.  Nonetheless, there is nothing preventing the use of Lagrange multipliers, which, as will become clear below, give an economy over the direct substitution method.
+
+The surface is shown here 
+
+It is useful to develop the general approach, which will be used in both cases, before launching into the specifics of each.  Indeed, the general approach will work for a variety of surfaces that exhibit azimuthal symmetry.
+
+The azimuthal symmetry suggests that the best generalized coordinates are the radial distance, $\rho$, the azimuthal angle, $\phi$, and the height, $z$, above the $x$-$y$ plane.
+
+In these coordinates, the Lagrangian takes the form
+
+\[ L = \frac{1}{2} m \left( \dot \rho^2 + \rho^2 \dot \phi^2 + \dot z^2 \right) - m g z \; . \]
+
+Since no term in the Lagrangian depends on $\phi$, its conjugate momentum 
+
+\[ p_{\phi} = \frac{\partial L}{\partial \dot \phi} = m \rho^2 \dot \phi \]
+
+is conserved and can be used to eliminate $\dot \phi$ from the equations of motion using 
+
+\[ \dot \phi = \frac{\ell/m}{\rho^2} \; , \]
+
+where $\ell$ is the arbitrary constant chosen to represent the conserved magnitude of the angular momentum.
+
+In general, the constraint specifying the surface is of the form
+
+\[ f(\rho,z) = 0 \;  \]
+
+and in this case that form is explicitly given as
+
+\[ z - c \rho^2 = 0 \; .\]
+
+For this analysis will focus on getting the equations of motion, making some elementary observations, and for looking at the period of small oscillations about constant circular motion.  In this way, the techniques of both approaches can be examined without being bogged down in the details.  
+
+Directly Eliminating the Constraint
+
+In this approach, the constraint equation is used to eliminate one of the degrees of freedom completely before the variations are taken to obtain the equations of motion.  Which degree of freedom is eliminated is a matter of taste, but since most texts are interested in the radius of stable circular motion rather than the height, we will choose to eliminate $z$.
+
+Expressing $\dot z$ in terms of $\rho$ and $\dot \rho$ is done by differentiating the constraint equation with respect to time
+
+\[ \dot z - 2 c \rho \dot \rho = 0 \; .\]
+
+The Lagrangian becomes
+
+\[ L = \frac{1}{2} m \left( (1 + 4 c^2 \rho^2) \dot \rho ^2 + \rho^2 \dot \phi^2 \right) - m g c \rho^2 \; .\]
+
+The conjugate momentum for $\rho$ is given by
+
+\[ p_{\rho} = m (1 + 4 c^2 \rho^2) \dot \rho \; \]
+
+and the generalized force is 
+
+\[ Q_{\rho} = 4 m c^2 \rho \dot \rho^2 + m \rho \dot \phi^2 - 2 m g c \rho \; . \]
+
+The corresponding equation of motion is 
+
+\[ m (1 + 4 c^2 \rho^2 ) \ddot \rho + 8 m c^2 \rho \dot \rho^2 - 4 m c^2 \rho \dot \rho^2 - m \rho \dot \phi^2 + 2 m g c \rho = 0 \; .\] 
+
+Simplifying, gives the final form of the equation of motion as 
+
+\[ m \ddot \rho = \frac{1}{1+4 c^2 \rho^2} \left( - 4 m c^2 \rho \dot \rho^2 + m \rho \dot \phi^2 - 2 m g c \rho \right) \; .\]
+
+The right-hand side can be regarded as the radial force $F_{\rho}$, which is related to the radial effective potential $V_{eff}$ through
+
+\[ F_{\rho} = -\frac{\partial V_{eff}}{\partial \rho} \; .\]
+
+Since we are hunting for small perturbations to stable circular motion, focus first on the circular motion.  Circular motion implies $\dot \rho = 0$ for all times.  This, in turn, implies that the generalized force must be zero so that once $\dot \rho = 0$ is achieved at one time it then persists.
+
+To determine the required condition, first substitute for $\dot \phi$ into the right-hand side of the previous equation, next set $\dot \rho = 0$, and then finally set that resulting expression to zero to arrive at
+
+\[ \frac{1}{1+4 c^2 \rho^2} \left( \frac{ (\ell/m)^2 }{\rho^3} - 2 g c \rho \right) = 0 \; \]
+
+or, more compactly,
+
+\[ \rho_{circ}^4 = \frac{ (\ell/m)^2 }{2 g c} \; . \]
+
+The angular rate at which the motion takes place can be found simply by substituting this condition into the relationship between $\rho$ and $\dot \phi$ to get
+
+\[ \dot \phi_{circ} = \sqrt{2 g c} \; .\]
+
+To obtain the frequency about stable circular motion requires evaluating
+
+\[ \left. \frac{\partial^2 V_{eff}}{\partial \rho^2} \right|_{\rho=\rho_{circ}} \; .\]
+
+This requires an very large amount of work if tackled directly but the computation can be made a bit more manageable by noting the structure $F_{\rho}$ can be written as
+
+\[ F_{\rho} = Q \left[ A + B + C \right] \; ,\]
+
+where:
+
+\[ Q = \frac{1}{1+4 c^2 \rho^2} \; , \]
+
+\[ A = - 4 m c^2 \rho \dot \rho^2 \; , \]
+
+\[ B =  m \frac{ (\ell/m)^2 }{\rho^3} \; , \] 
+
+and
+
+\[ C = - 2 m g c \rho \; .\]
+
+The condition for stable circular motion derived above is 
+
+\[ A + B + C = 0 \; . \]
+
+The second partial derivative of $V_{eff}$ (up to a sign) is then given by
+
+\[ Q' \left[ A + B + C \right] + Q \left[A' + B' + C'\right] \; , \]
+
+where the prime indicates differentiation with respect to $\rho$.
+
+Since these terms need to be evaluated for stable circular motion, the first major term vanishes as well as $A'$.  What is left is
+
+\[ \frac{1}{1+4 c^2 \rho^2} 
+
+\[ \omega_{circ} = 2 \sqrt{ \frac{2 g}{c}} \; . \]
+
+Using Lagrange Multipliers
+
+In this case, we keep both dynamical degrees of freedom ($\rho$ and $z$) and add onto the resulting Euler-Lagrange equations the appropriate derivatives of the constraint equation.  The resulting equations are
+
+\[ m \ddot \rho - m \rho \dot \phi ^2 = \lambda \frac{\partial f(z,\rho)}{\partial r} = -2 \lambda c \rho \; \]
+
+and
+
+\[ m \ddot z + mg = \lambda \frac{\partial f(z,\rho)}{\partial z} = \lambda \; .\]
+
+Stable circular motion, as discussed above, sets limits on $\dot \rho$.  Since $z$ hasn't been eliminated, these conditions hold also for $\dot z$ implying that $\ddot z = 0$.  This requirement means we can immediately solve for $\lambda$ to get
+
+\[ \lambda = m g \; .\]
+
+Substituting this result into the $\rho$ equation (and setting $\ddot \rho = 0$) gives
+
+\[ m \rho_{circ} \frac{ (\ell/m)^2 }{\rho_{circ}^4} = \frac{2 m g}{c} \rho_{circ} \; , \]
+
+which, upon simplifying, gives,
+
+\[ \rho_{circ}^4 = \frac{ (\ell/m)^2 }{2 g c} \; , \]
+
+which is the same result as before.  
+
+The derivation of the equation of motion for $\rho$ follows next.  To do this simply substitute in for $\lambda$ to get
+
+\[ m \ddot \rho = \frac{(\ell/m)^2}{\rho^3} - 2 m g c \rho \; .\]
+
+Taking the right-hand-side as the negative of the first derivative of the effective potential $V_{eff}$, the second derivative immediately follows as
+
+\[ \frac{\partial^2 V_{eff}}{\partial \rho^2} = 3 \frac{(\ell/m)^2}{\rho^4} + 2 m g c \; .\]
+
+Substituting in the equilibrium condition gives
+
+\[ \left. \frac{\partial^2 V_{eff}}{\partial \rho^2} \right|_{\rho=\rho_{circ}} = 3 \frac{(\ell/m)^2}{\frac{ (\ell/m)^2 }{2 g c}} + 2 m g c = 8 m g c \; . \]
+
+Thus, we can conclude that the frequency of oscillation about a circular orbit is 
+
+\[ \omega = 2 \sqrt{2 g c} = 2 \dot \phi_{circ} \; , \]
+
+a result reminiscent of the motion about a Lagrange point.
+
+Note that these result were obtained with a lot less effort than was expended in the direct elimination and, as a bonus, the value of the constraint force (which is what $\lambda$ represents) was calculated.
+
+
+\end{document}
