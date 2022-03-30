@@ -1,0 +1,1 @@
+Special directory with post facto orginaization to reflect an update to Aristotle2Digital June 2017 revision
